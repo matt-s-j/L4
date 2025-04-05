@@ -31,7 +31,7 @@ for (let p of pages) {
   console.log(url, title, ARE_WE_HOME);
 
   if (!ARE_WE_HOME && !url.startsWith("http")) {
-    url = "../" + url;
+    url = "./" + url;
   }
   console.log(url, title, ARE_WE_HOME);
   
