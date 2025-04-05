@@ -17,8 +17,8 @@ const ARE_WE_HOME = document.documentElement.classList.contains("home");
 
 let pages = [
   {url: "./", title: "Home"},
-  {url: "/projects", title: "Projects"},
-  {url: "/contacts", title: "Contacts"},
+  {url: "projects", title: "Projects"},
+  {url: "contacts", title: "Contacts"},
 ]
 
 let nav = document.createElement("nav");
