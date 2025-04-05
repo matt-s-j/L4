@@ -1,0 +1,81 @@
+:root {
+    --color--accent: #4a90e2;
+}
+
+html {
+    color-scheme: dark light;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 10;
+    padding: 10ch;
+    font: 100%/1.5 system-ui, sans-serif;
+    max-width: 100ch;
+    margin-inline: auto;
+    accent-color: var(--color--accent);
+}
+
+nav {
+    text-align: center;
+    display: flex;
+    padding: .5em;
+    margin-bottom: 1em;
+    border-bottom: #c5bcbc 1px solid;
+}
+
+nav a {
+    text-decoration: none;
+    padding: 10px 20px;
+    display: block;
+    flex: 1;
+}
+nav a:hover {
+    background-color: var(--color--accent);
+    color: white;
+}
+
+nav ul{
+    display: contents;
+}
+
+nav li {
+    list-style: none;
+}
+
+.current {
+    background-color: #ada9a9;
+    color: white;
+}
+
+form input{
+    font-family: inherit;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    margin-block: 1em;
+}
+
+form textarea{
+    font-family: inherit;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    margin-block: 1em;
+}
+
+
+form label {
+    display: block;
+    margin-block: 1em;
+}
+
+.color-scheme {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    display: inline-flex;
+    gap: 1rem;
+    font-family: inherit;
+    font-size: 80%;
+}
