@@ -5,6 +5,7 @@
     {url: "./", title: "Home"},
     {url: "./projects", title: "Projects"},
     {url: "./contacts", title: "Contacts"},
+    {url: "./meta", title: "Meta"},
     ]
 
     onMount(() => {
@@ -41,7 +42,7 @@
     {/each}
 </nav>
 
-YOLO <slot />
+<slot />
 
 <style>
 :root {

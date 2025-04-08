@@ -8,6 +8,7 @@
     <img src={data.image} alt={data.title} />
     <p>{data.description}</p>
     <a href={data.link} target="_blank">View Project</a>
+    <p>{data.year}</p>
 </article>
 
 <style>
