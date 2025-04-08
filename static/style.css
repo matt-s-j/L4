@@ -79,3 +79,19 @@ form label {
     font-family: inherit;
     font-size: 80%;
 }
+
+.projects {
+    max-width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15em, 1fr));
+    gap: 1em;
+}
+
+.article {
+    grid-template-rows: subgrid;
+    grid-row: span 3;
+}
+
+.article h2 {
+    margin: 0;
+}

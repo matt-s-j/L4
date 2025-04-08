@@ -1,16 +1,18 @@
+<script>
+    import projects from "$lib/projects.json";
+    import Project from "$lib/Project.svelte";
+</script>
+
 <svelte:head>
     <title>Projects</title>
 </svelte:head>
 
 <body>
-    <h1>Projects</h1>
-    <p>
-        Here are some of the projects I have worked on:
-        <ul>
-            <li> Project 1</li>
-            <li> Project 2</li>
-            <li> Project 3</li>
-            <li> Project 4</li>
-            <li> Project 5</li>
-        </ul>
+    <h1>{projects.length} Projects</h1>
+   
+    <div class="projects">
+        {#each projects as project}
+            <Project data={project} />
+        {/each}
+    </div>
 </body>
