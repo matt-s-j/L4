@@ -78,6 +78,10 @@
         );
     }
 
+    let hoveredIndex = -1;
+    let hoveredCommit;
+    $: hoveredCommit = commits[hoveredIndex] ?? hoveredCommit ?? {};
+
 </script>
 
 
@@ -102,6 +106,8 @@
     <g class="dots">
         {#each commits as commit, index}
             <circle
+                on:mouseenter={evt => hoveredIndex = index}
+                on:mouseleave={evt => hoveredIndex = -1}
                 cx={xScale(commit.datetime)}
                 cy={yScale(commit.hourFrac)}
                 r="5"
@@ -111,6 +117,16 @@
     </g>
 </svg>
 
+<dl class="info tooltip">
+	<dt>Commit</dt>
+	<dd><a href="{ hoveredCommit.url }" target="_blank">{ hoveredCommit.id }</a></dd>
+
+	<dt>Date</dt>
+	<dd>{ hoveredCommit.datetime?.toLocaleString("en", {dateStyle: "full"}) }</dd>
+
+	<!-- Add: Time, author, lines edited -->
+</dl>
+
 
 <style>
     svg {
@@ -119,5 +135,15 @@
 
     .gridlines {
         stroke-opacity: .2;
+    }
+
+    circle {
+        transition: 200ms;
+        transform-origin: center;
+        transform-box: fill-box;
+
+        &:hover {
+            transform: scale(1.5);
+        }
     }
 </style>
