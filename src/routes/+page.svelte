@@ -1,7 +1,22 @@
 <script>
     import projects from "$lib/projects.json";
     import Project from "$lib/Project.svelte";
-    let profileData = fetch("https://api.github.com/users/matt-s-j");
+
+    import { onMount } from "svelte";
+
+    let githubData = null;
+    let loading = true;
+    let error = null;
+
+    onMount(async () => {
+        try {
+            const response = await fetch("https://api.github.com/users/matt-s-j");
+            githubData = await response.json();
+        } catch (err) {
+            error = err;
+        }
+        loading = false;
+    });
 </script>
 
 <body>
@@ -14,29 +29,23 @@
         various projects involving data analysis and software development.
     </p>
     
-    {#await fetch("https://api.github.com/users/zhengsophia")}
+    {#if loading}
     <p>Loading...</p>
-    {:then response}
-        {#await response.json()}
-        <p>Decoding...</p>
-        {:then data}
+    {:else if error}
+    <p class="error">Something went wrong: {error.message}</p>
+    {:else}
         <section>
             <h2>My GitHub Stats</h2>
             <dl>
                 <dt>Followers:</dt>
-                <dd>{data.followers}</dd>
+                <dd>{githubData.followers}</dd>
                 <dt>Following:</dt>
-                <dd>{data.following}</dd>
+                <dd>{githubData.following}</dd>
                 <dt>Public Repositories:</dt>
-                <dd>{data.public_repos}</dd>
+                <dd>{githubData.public_repos}</dd>
             </dl>
         </section>
-        {:catch error}
-        <p class="error">Something went wrong: {error.message}</p>
-        {/await}
-    {:catch error}
-        <p class="error">Something went wrong: {error.message}</p>
-    {/await}
+    {/if}
     
     <h2> Latest Projects</h2>
     <div class="projects">
